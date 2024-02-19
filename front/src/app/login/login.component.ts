@@ -30,14 +30,53 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // login() {
+  //   this.accountService.login(this.user).subscribe({
+  //     next: (Response) => {
+  //       console.log(this.user);
+  //       // this.loggedIn = true;
+  //     },
+  //     error: (error) => console.log(error),
+  //   });
+  //   if (this.IsAdmin) {
+  //     if (
+  //       this.adminEmail === 'admin@sectoin.com' &&
+  //       this.adminPassword === 'ronaldo123'
+  //     ) {
+  //       console.log('Admin login successful');
+  //       this._router.navigate(['/donors']);
+  //     } else {
+  //       console.log('Incorrect email or password for admin');
+  //       this.msg = 'Incorrect email or password for admin';
+  //       this.adminEmail = '';
+  //       this.adminPassword = '';
+  //     }
+  //   }
+  // }
+
   login() {
-    this.accountService.login(this.user).subscribe({
-      next: (Response) => {
-        console.log(this.user);
-        // this.loggedIn = true;
-      },
-      error: (error) => console.log(error),
-    });
+    if (this.IsAdmin) {
+      if (
+        this.adminEmail === 'admin@section.com' &&
+        this.adminPassword === 'ronaldo123'
+      ) {
+        console.log('Admin login successful');
+        this._router.navigate(['/admindashboard']);
+      } else {
+        console.log('Incorrect email or password for admin');
+        this.msg = 'Incorrect email or password for admin';
+        this.adminEmail = '';
+        this.adminPassword = '';
+      }
+    } else {
+      this.accountService.login(this.user).subscribe({
+        next: (Response) => {
+          console.log(this.user);
+          // this.loggedIn = true;
+        },
+        error: (error) => console.log(error),
+      });
+    }
   }
 
   logout() {

@@ -8,6 +8,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import { DonorsComponent } from './login-success/donors/donors.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dash', component: MaindashboardComponent },
   { path: 'registration', component: RegistrationComponent },
+  { path: 'admindashboard', component: AdminDashboardComponent },
 
   { path: 'homepage', component: HomepageComponent },
   { path: 'loginsuccess', component: LoginSuccessComponent },

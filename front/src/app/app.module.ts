@@ -46,6 +46,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { RouterModule } from '@angular/router';
 import { DonorsComponent } from './login-success/donors/donors.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { DonorsComponent } from './login-success/donors/donors.component';
     SupportingComponent,
     LoginSuccessComponent,
     DonorsComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -259,3 +259,4 @@ C:\Users\SEVEN86 COMPUTERS\Desktop\Blood-Banking-main\Blood-Banking-main\back\ob
 C:\Users\SEVEN86 COMPUTERS\Desktop\Blood-Banking-main\Blood-Banking-main\back\obj\Debug\net8.0\back.pdb
 C:\Users\SEVEN86 COMPUTERS\Desktop\Blood-Banking-main\Blood-Banking-main\back\obj\Debug\net8.0\back.genruntimeconfig.cache
 C:\Users\SEVEN86 COMPUTERS\Desktop\Blood-Banking-main\Blood-Banking-main\back\obj\Debug\net8.0\ref\back.dll
+C:\Users\SEVEN86 COMPUTERS\Desktop\Blood-Banking-main\Blood-Banking-main\back\obj\Debug\net8.0\back.sourcelink.json
