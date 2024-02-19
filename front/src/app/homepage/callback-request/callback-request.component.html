@@ -1,0 +1,60 @@
+<div class="flex flex-col justify-center gap-4 p-4 text-center">
+  <h1>Request for CallBack</h1>
+  <div class="text-xl text-gray-600">
+    Submit your email address and we will be in touch with you shortly.
+  </div>
+
+  <form
+    class="flex flex-col items-center justify-center gap-6 md:flex-row"
+    (ngSubmit)="submitForm()"
+  >
+    <div class="relative">
+      <input
+        type="text"
+        placeholder="Your Name"
+        class="border-1 bg-transparent px-5 py-2 pl-10 text-gray-600 placeholder:font-thin focus:outline-none md:w-32 lg:w-[250px]"
+        [(ngModel)]="name"
+        name="name"
+      />
+      <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+        <i class="fa-solid fa-user"></i>
+      </div>
+    </div>
+    <div class="relative">
+      <input
+        type="email"
+        placeholder="Your Email"
+        class="border-1 bg-transparent px-5 py-2 pl-10 text-gray-600 placeholder:font-thin focus:outline-none md:w-32 lg:w-[250px]"
+        [(ngModel)]="email"
+        name="email"
+      />
+      <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+        <i class="fa-regular fa-envelope"></i>
+      </div>
+    </div>
+    <div class="relative">
+      <input
+        type="tel"
+        placeholder="Your Contact Number"
+        class="border-1 bg-transparent px-5 py-2 pl-10 text-gray-600 placeholder:font-thin focus:outline-none md:w-32 lg:w-[250px]"
+        [(ngModel)]="contactNumber"
+        name="contactNumber"
+      />
+      <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+        <i class="fa-solid fa-phone"></i>
+      </div>
+    </div>
+    <div class="relative">
+      <button
+        type="submit"
+        class="border-1 bg-red-700 px-5 py-2 pl-10 text-white placeholder:font-thin focus:outline-none md:w-32 lg:w-[250px]"
+      >
+        Send
+      </button>
+    </div>
+  </form>
+  <p class="text-xl">
+    A single donation of blood can help save the life of up to 3 people <br />
+    Save lives by becoming a voluntary blood donors.
+  </p>
+</div>

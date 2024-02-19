@@ -1,0 +1,201 @@
+<div class="wrapper">
+  <div class="container">
+    <!-- User Login Form -->
+    <div *ngIf="!IsAdmin" class="user-login-form">
+      <h2 class="textual">User Login</h2>
+      <form
+        *ngIf="!(accountService.currentUser$ | async)"
+        #userloginform="ngForm"
+        (ngSubmit)="login()"
+      >
+        <small class="text-danger"
+          ><b>{{ msg }}</b></small
+        >
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="mat-form-field-custom">
+            <mat-label>Email address</mat-label>
+            <input
+              matInput
+              placeholder="Enter your email"
+              name="email"
+              [(ngModel)]="user.email"
+              required
+              pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+              #email="ngModel"
+              [ngClass]="{ 'is-invalid': email.invalid && email.touched }"
+            />
+          </mat-form-field>
+          <div *ngIf="email.errors && email.invalid && email.touched">
+            <small class="text-danger" *ngIf="email.errors['required']"
+              ><b>Required field</b></small
+            >
+            <small class="text-danger" *ngIf="email.errors['pattern']"
+              ><b>Invalid email Id</b></small
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="mat-form-field-custom">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="Enter your password"
+              name="password"
+              [(ngModel)]="user.password"
+              required
+              #password="ngModel"
+              [ngClass]="{ 'is-invalid': password.invalid && password.touched }"
+            />
+            <mat-icon matSuffix (click)="togglePasswordVisibility()">
+              {{ showPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </mat-form-field>
+          <div *ngIf="password.errors && password.invalid && password.touched">
+            <small class="text-danger" *ngIf="password.errors['pattern']"
+              ><b>Required field</b></small
+            >
+          </div>
+          <small style="color: gray; font-size: 10px"
+            >At least one uppercase, numeric digit, lowercase, special
+            character, length of 6-20</small
+          >
+        </div>
+
+        <div class="checkbox" style="margin-top: 5px">
+          <small style="color: gray"
+            ><input type="checkbox" name="remember" [(ngModel)]="rememberMe" />
+            Remember me</small
+          >
+          <small style="color: navy; margin-left: 42%; cursor: pointer"
+            >Forgot password?</small
+          >
+        </div>
+
+        <button
+          [routerLink]="['/loginsuccess']"
+          [disabled]="userloginform.form.invalid"
+          type="submit"
+          class="btn loginbtn"
+        >
+          Login
+        </button>
+      </form>
+      <!-- button just for test -->
+      <!-- <div *ngIf="accountService.currentUser$ | async">
+        <p>Hello Donor</p>
+        <button class="btn loginbtn" (click)="logout()">Logout</button>
+      </div> -->
+
+      <div class="sign-up" style="text-align: center; margin-top: 10px">
+        Don't have an Account?
+        <small
+          [routerLink]="['/registration']"
+          style="color: navy; text-align: center; cursor: pointer"
+          ><b>Create One</b></small
+        >
+      </div>
+
+      <div class="sign-up" style="text-align: center; margin-top: 10px">
+        Are you an admin?
+        <small
+          class="userlogin"
+          style="color: navy; text-align: center; cursor: pointer"
+          ><b (click)="Admin()">click here</b></small
+        >
+      </div>
+
+      <hr />
+    </div>
+
+    <!-- Admin Login Form -->
+    <div *ngIf="IsAdmin" class="admin-login-form">
+      <h2 class="textual">Admin Login</h2>
+      <form #adminloginform="ngForm">
+        <small class="text-danger"
+          ><b>{{ msg }}</b></small
+        >
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="mat-form-field-custom">
+            <mat-label>Admin Email address</mat-label>
+            <input
+              matInput
+              placeholder="Enter admin email"
+              name="adminEmail"
+              [(ngModel)]="adminEmail"
+              required
+              pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+              #adminemail="ngModel"
+              [ngClass]="{
+                'is-invalid': adminemail.invalid && adminemail.touched
+              }"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              adminemail.errors && adminemail.invalid && adminemail.touched
+            "
+          >
+            <small class="text-danger" *ngIf="adminemail.errors['required']"
+              ><b>Required field</b></small
+            >
+            <small class="text-danger" *ngIf="adminemail.errors['pattern']"
+              ><b>Invalid email Id</b></small
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="mat-form-field-custom">
+            <mat-label>Admin Password</mat-label>
+            <input
+              matInput
+              [type]="showAdminPassword ? 'text' : 'password'"
+              placeholder="Enter admin password"
+              name="adminPassword"
+              [(ngModel)]="adminPassword"
+              required
+              #adminpassword="ngModel"
+              [ngClass]="{
+                'is-invalid': adminpassword.invalid && adminpassword.touched
+              }"
+            />
+            <mat-icon matSuffix (click)="toggleAdminPasswordVisibility()">
+              {{ showAdminPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </mat-form-field>
+          <div
+            *ngIf="
+              adminpassword.errors &&
+              adminpassword.invalid &&
+              adminpassword.touched
+            "
+          >
+            <small class="text-danger" *ngIf="adminpassword.errors['pattern']"
+              ><b>Required field</b></small
+            >
+          </div>
+        </div>
+
+        <button
+          [disabled]="adminloginform.form.invalid"
+          type="submit"
+          class="btn loginbtn"
+        >
+          Login
+        </button>
+
+        <div class="sign-up" style="text-align: center; margin-top: 10px">
+          Are you a User?
+          <small
+            class="adminlogin"
+            style="color: navy; text-align: center; cursor: pointer"
+            ><b (click)="Admin()">click here</b></small
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
