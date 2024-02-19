@@ -1,6 +1,6 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,10 +43,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-
+import { MatRadioModule } from '@angular/material/radio';
 import { RouterModule } from '@angular/router';
 import { DonorsComponent } from './login-success/donors/donors.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AddEditComponent } from './admin-dashboard/add-edit/add-edit.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -71,6 +74,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     LoginSuccessComponent,
     DonorsComponent,
     AdminDashboardComponent,
+    AddEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +106,10 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     MatTooltipModule,
     MatSidenavModule,
     MatListModule,
+    MatDialogModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent, LoginComponent],
