@@ -8,7 +8,7 @@ import { AccountService } from '../_services/account.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   IsAdmin = false;
 
   user = new User();
@@ -26,33 +26,10 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  constructor(private _router: Router, public accountService: AccountService) {}
-
-  ngOnInit(): void {}
-
-  // login() {
-  //   this.accountService.login(this.user).subscribe({
-  //     next: (Response) => {
-  //       console.log(this.user);
-  //       // this.loggedIn = true;
-  //     },
-  //     error: (error) => console.log(error),
-  //   });
-  //   if (this.IsAdmin) {
-  //     if (
-  //       this.adminEmail === 'admin@sectoin.com' &&
-  //       this.adminPassword === 'ronaldo123'
-  //     ) {
-  //       console.log('Admin login successful');
-  //       this._router.navigate(['/donors']);
-  //     } else {
-  //       console.log('Incorrect email or password for admin');
-  //       this.msg = 'Incorrect email or password for admin';
-  //       this.adminEmail = '';
-  //       this.adminPassword = '';
-  //     }
-  //   }
-  // }
+  constructor(
+    private _router: Router,
+    public accountService: AccountService,
+  ) {}
 
   login() {
     if (this.IsAdmin) {

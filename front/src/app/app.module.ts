@@ -116,6 +116,6 @@ import { PagesComponent } from './page/page.component';
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent, LoginComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

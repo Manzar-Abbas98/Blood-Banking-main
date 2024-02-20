@@ -14,13 +14,12 @@ export class CallbackRequestComponent {
   constructor(private http: HttpClient) {}
 
   submitForm(): void {
-   
     const formData = {
       name: this.name,
       email: this.email,
       contactNumber: this.contactNumber,
     };
-  
+
     // Send form data to backend API
     this.http.post<any>('BACKEND_API_ENDPOINT', formData).subscribe(
       (response) => {
@@ -32,5 +31,6 @@ export class CallbackRequestComponent {
         console.error('Error', error);
       }
     );
+    console.log(formData);
   }
 }

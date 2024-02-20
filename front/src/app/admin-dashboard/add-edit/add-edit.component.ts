@@ -25,7 +25,7 @@ export class AddEditComponent implements OnInit {
       firstName: '',
       lastName: '',
       email: '',
-      dob: '',
+      age: '',
       gender: '',
       Bloodtype: '',
       company: '',
