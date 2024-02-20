@@ -29,7 +29,6 @@ import { FAQSComponent } from './homepage/faqs/faqs.component';
 import { SupportingComponent } from './homepage/supporting/supporting.component';
 import { TestimotionalComponent } from './homepage/testimotional/testimotional.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { LoginSuccessComponent } from './login-success/login-success.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -45,11 +44,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { RouterModule } from '@angular/router';
-import { DonorsComponent } from './login-success/donors/donors.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AddEditComponent } from './admin-dashboard/add-edit/add-edit.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSortModule } from '@angular/material/sort';
+import { PageModule } from './page/page.module';
+import { ComponentModule } from './component/component.module';
+import { PagesComponent } from './page/page.component';
 
 @NgModule({
   declarations: [
@@ -71,10 +72,9 @@ import { MatSortModule } from '@angular/material/sort';
     EligibilityCrieteriaComponent,
     FAQSComponent,
     SupportingComponent,
-    LoginSuccessComponent,
-    DonorsComponent,
     AdminDashboardComponent,
     AddEditComponent,
+    PagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,9 +110,12 @@ import { MatSortModule } from '@angular/material/sort';
     MatRadioModule,
     ReactiveFormsModule,
     MatSortModule,
+    ComponentModule,
+    RouterModule,
+    PageModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent, LoginComponent],
-  exports: [RouterModule],
 })
 export class AppModule {}
