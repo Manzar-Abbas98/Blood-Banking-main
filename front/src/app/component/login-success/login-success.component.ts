@@ -12,7 +12,7 @@ export class LoginSuccessComponent {
   isHandset: boolean = true;
 
   constructor(
-    private accountService: AccountService,
+    public accountService: AccountService,
     private router: Router,
     private breakpointObserver: BreakpointObserver
   ) {
@@ -25,6 +25,6 @@ export class LoginSuccessComponent {
 
   logout() {
     this.accountService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/homepage']);
   }
 }

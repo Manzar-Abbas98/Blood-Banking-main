@@ -4,8 +4,10 @@
   </button>
   <span>User Dashboard</span>
   <span class="toolbar-item-spacer"></span>
-
   <button mat-icon-button matTooltip="Logout" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+  <button mat-icon-button matTooltip="Settings" routerLink="/member/edit">
     <mat-icon>exit_to_app</mat-icon>
   </button>
 </mat-toolbar>
@@ -25,7 +27,7 @@
           <span>Home</span>
         </div>
       </mat-list-item>
-      <mat-list-item routerLink="/pages/donors" class="mat-list-item">
+      <mat-list-item routerLink="/memberList" class="mat-list-item">
         <div class="responsive">
           <mat-icon>bloodtype</mat-icon>
           <span>Donors</span>

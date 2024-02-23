@@ -26,7 +26,6 @@ app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("ht
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -1,4 +1,5 @@
 using back.Data;
+using back.Helpers;
 using back.Interfaces;
 using back.Services;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,10 @@ namespace back.Extensions
            services.AddCors();
 
            services.AddScoped<ITokenService, TokenService>();
+           services.AddScoped<IUserRepository, UserRepository>();
+           services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+           services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
+           services.AddScoped<IPhotoService, PhotoService>();
 
            return services;
         }

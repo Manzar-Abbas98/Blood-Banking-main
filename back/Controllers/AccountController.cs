@@ -33,7 +33,7 @@ namespace back.Controllers
                 UserName = registerDto.UserName,
                 Gender = registerDto.Gender,
                 BloodGroup = registerDto.BloodGroup,
-                Age = registerDto.Age,
+                // Age = registerDto.Age,
                 Contact = registerDto.Contact,
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
                 PasswordSalt = hmac.Key
@@ -52,7 +52,7 @@ namespace back.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == loginDto.Email);
+            var user = await _context.Users.Include(p => p.Photos).SingleOrDefaultAsync(x => x.Email == loginDto.Email);
 
             if(user == null) return Unauthorized("Invalid Email");
 
@@ -67,7 +67,9 @@ namespace back.Controllers
             return new UserDto
              {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
+                Email = user.Email
              };
         }
 

@@ -12,8 +12,8 @@ namespace back.DTOs
         public string Gender { get; set; }
         [Required]
         public string BloodGroup { get; set; }
-        [Required]
-        public int Age { get; set; }
+        // [Required]
+        // public int Age { get; set; }
         [Required]
         public string Contact { get; set; }
         [Required]

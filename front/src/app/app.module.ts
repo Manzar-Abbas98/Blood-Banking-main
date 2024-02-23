@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -51,6 +51,16 @@ import { MatSortModule } from '@angular/material/sort';
 import { PageModule } from './page/page.module';
 import { ComponentModule } from './component/component.module';
 import { PagesComponent } from './page/page.component';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+import { MemberListComponent } from './member-list/member-list.component';
+import { MemberCardsComponent } from './member-cards/member-cards.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { MemberDetailComponent } from './member-detail/member-detail.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { MemberEditComponent } from './member-edit/member-edit.component';
 
 @NgModule({
   declarations: [
@@ -75,9 +85,16 @@ import { PagesComponent } from './page/page.component';
     AdminDashboardComponent,
     AddEditComponent,
     PagesComponent,
+    MemberListComponent,
+    MemberCardsComponent,
+    MemberListComponent,
+    MemberDetailComponent,
+    PhotoEditorComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -114,8 +131,15 @@ import { PagesComponent } from './page/page.component';
     RouterModule,
     PageModule,
     HttpClientModule,
+    FileUploadModule,
+    TabsModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    })
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent, LoginComponent],
 })
 export class AppModule {}

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { AccountService } from '../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +20,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private toastr : ToastrService
   ) {}
 
   togglePasswordVisibility() {
@@ -55,7 +57,11 @@ export class RegistrationComponent implements OnInit {
       next: (response) => {
         console.log(response);
       },
-      error: (error) => console.log(error),
+      error: error => {
+        console.log(error),
+        this.toastr.error(error);
+      },
+      complete: () => this.toastr.show("Register Successfully")
     });
   }
 }

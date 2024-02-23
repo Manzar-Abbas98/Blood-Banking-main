@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SEVEN86 COMPUTERS\\Desktop\\Blood-Banking-main\\Blood-Banking-main\\back\\back.csproj": {}
+    "C:\\Users\\Muhammad Yaseen Alam\\Documents\\FinalYearProject\\Blood-Banking-main\\back\\back.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SEVEN86 COMPUTERS\\Desktop\\Blood-Banking-main\\Blood-Banking-main\\back\\back.csproj": {
+    "C:\\Users\\Muhammad Yaseen Alam\\Documents\\FinalYearProject\\Blood-Banking-main\\back\\back.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SEVEN86 COMPUTERS\\Desktop\\Blood-Banking-main\\Blood-Banking-main\\back\\back.csproj",
+        "projectUniqueName": "C:\\Users\\Muhammad Yaseen Alam\\Documents\\FinalYearProject\\Blood-Banking-main\\back\\back.csproj",
         "projectName": "back",
-        "projectPath": "C:\\Users\\SEVEN86 COMPUTERS\\Desktop\\Blood-Banking-main\\Blood-Banking-main\\back\\back.csproj",
-        "packagesPath": "C:\\Users\\SEVEN86 COMPUTERS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SEVEN86 COMPUTERS\\Desktop\\Blood-Banking-main\\Blood-Banking-main\\back\\obj\\",
+        "projectPath": "C:\\Users\\Muhammad Yaseen Alam\\Documents\\FinalYearProject\\Blood-Banking-main\\back\\back.csproj",
+        "packagesPath": "C:\\Users\\Muhammad Yaseen Alam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Muhammad Yaseen Alam\\Documents\\FinalYearProject\\Blood-Banking-main\\back\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\SEVEN86 COMPUTERS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Muhammad Yaseen Alam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,17 +34,20 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.25.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -81,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

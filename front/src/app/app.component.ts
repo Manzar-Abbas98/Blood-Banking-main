@@ -19,17 +19,17 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getUsers();
+    // this.getUsers();
     this.setCurrentUSer();
   }
 
-  getUsers() {
-    this.http.get('https://localhost:5270/fyp/users').subscribe({
-      next: (response) => (this.users = response),
-      error: (error) => console.log(error),
-      complete: () => console.log('succesfully run'),
-    });
-  }
+  // getUsers() {
+  //   this.http.get('https://localhost:5270/fyp/users').subscribe({
+  //     next: (response) => (this.users = response),
+  //     error: (error) => console.log(error),
+  //     complete: () => console.log('succesfully run'),
+  //   });
+  // }
 
   setCurrentUSer() {
     const userString = localStorage.getItem('user');

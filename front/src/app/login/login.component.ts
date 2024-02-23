@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { AccountService } from '../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import { AccountService } from '../_services/account.service';
 export class LoginComponent implements OnInit {
   IsAdmin = false;
 
-  user = new User();
+  // user = new User();
+  user : any = {};
   msg = '';
   adminEmail = '';
   adminPassword = '';
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  constructor(private _router: Router, public accountService: AccountService) {}
+  constructor(private _router: Router, public accountService: AccountService, private toastr : ToastrService) {}
 
   ngOnInit(): void {}
 
@@ -54,37 +56,57 @@ export class LoginComponent implements OnInit {
   //   }
   // }
 
-  login() {
-    if (this.IsAdmin) {
-      if (
-        this.adminEmail === 'admin@section.com' &&
-        this.adminPassword === 'ronaldo123'
-      ) {
-        console.log('Admin login successful');
-        this._router.navigate(['/admindashboard']);
-      } else {
-        console.log('Incorrect email or password for admin');
-        this.msg = 'Incorrect email or password for admin';
-        this.adminEmail = '';
-        this.adminPassword = '';
-      }
-    } else {
-      this.accountService.login(this.user).subscribe({
-        next: (Response) => {
-          console.log(this.user);
-          // this.loggedIn = true;
-        },
-        error: (error) => console.log(error),
-      });
-    }
+  // login() {
+  //   if (this.IsAdmin) {
+  //     if (
+  //       this.adminEmail === 'admin@section.com' &&
+  //       this.adminPassword === 'ronaldo123'
+  //     ) {
+  //       console.log('Admin login successful');
+  //       this._router.navigate(['/admindashboard']);
+  //     } else {
+  //       console.log('Incorrect email or password for admin');
+  //       this.msg = 'Incorrect email or password for admin';
+  //       this.adminEmail = '';
+  //       this.adminPassword = '';
+  //     }
+  //   } else {
+  //     this.accountService.login(this.user).subscribe({
+  //       next: (Response) => {
+  //         console.log(this.user);
+  //         // this.loggedIn = true;
+  //       },
+  //       error: (error) => console.log(error),
+  //     });
+  //   }
+  //}
+
+  login()
+  {
+    this.accountService.login(this.user).subscribe({
+            next: response => {
+              console.log(response);
+
+              // this.loggedIn = true;
+            },
+            error: error => {
+              console.log(error),
+              this.toastr.error(error);
+            },
+            complete: () => {this._router.navigateByUrl('/loginsuccess');
+            this.toastr.show("LogIn Successfully");
+          }
+          });
   }
 
-  logout() {
+  logout() 
+  {
     this.accountService.logout();
     // this.loggedIn = false;
   }
+  
 
-  Admin() {
-    this.IsAdmin = !this.IsAdmin;
-  }
+  // Admin() {
+  //   this.IsAdmin = !this.IsAdmin;
+  // }
 }
