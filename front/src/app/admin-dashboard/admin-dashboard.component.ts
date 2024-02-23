@@ -20,7 +20,7 @@ export class AdminDashboardComponent implements OnInit {
     'firstName',
     'lastName',
     'email',
-    'dob',
+    'age',
     'gender',
     'Bloodtype',
     'city',

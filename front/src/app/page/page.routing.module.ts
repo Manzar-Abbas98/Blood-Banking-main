@@ -9,7 +9,8 @@ const routes: Routes = [
     path: '',
     component: PagesComponent,
     children: [
-      { path: '', component: DonorsComponent },
+      // { path: '', component: FirstMainComponent },
+      { path: 'donors', component: DonorsComponent },
       { path: 'userhome', component: UserhomeComponent },
     ],
   },
