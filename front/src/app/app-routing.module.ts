@@ -7,7 +7,6 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { LoginSuccessComponent } from './component/login-success/login-success.component';
 import { authGuard } from './_guards/auth.guard';
-import { MemberListComponent } from './member-list/member-list.component';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberEditComponent } from './member-edit/member-edit.component';
 import { preventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
@@ -20,22 +19,19 @@ const routes: Routes = [
   },
 
   { path: '', component: HomepageComponent },
-  {path : '',
+  {
+    path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [authGuard],
     children: [
       { path: 'loginsuccess', component: LoginSuccessComponent },
       { path: 'dash', component: MaindashboardComponent },
-      {path: 'memberList', component: MemberListComponent},
-      {path: 'members/:email' , component: MemberDetailComponent},
-      {path: 'member/edit' , component: MemberEditComponent, canDeactivate: [preventUnsavedChangesGuard]}
-    ]
+    ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'admindashboard', component: AdminDashboardComponent },
   { path: 'homepage', component: HomepageComponent },
-  
 ];
 
 @NgModule({

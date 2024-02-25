@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './page.component';
 import { DonorsComponent } from './donors/donors.component';
 import { UserhomeComponent } from './userhome/userhome.component';
+import { MemberEditComponent } from '../member-edit/member-edit.component';
+import { preventUnsavedChangesGuard } from '../_guards/prevent-unsaved-changes.guard';
+import { MemberListComponent } from '../member-list/member-list.component';
+import { MemberDetailComponent } from '../member-detail/member-detail.component';
 
 const routes: Routes = [
   {
@@ -12,6 +16,14 @@ const routes: Routes = [
       // { path: '', component: FirstMainComponent },
       { path: 'donors', component: DonorsComponent },
       { path: 'userhome', component: UserhomeComponent },
+      { path: 'memberList', component: MemberListComponent },
+      { path: 'members/:email', component: MemberDetailComponent },
+
+      {
+        path: 'member/edit',
+        component: MemberEditComponent,
+        canDeactivate: [preventUnsavedChangesGuard],
+      },
     ],
   },
 ];

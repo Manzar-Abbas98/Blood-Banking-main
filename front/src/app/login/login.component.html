@@ -3,11 +3,7 @@
     <!-- User Login Form -->
     <div *ngIf="!IsAdmin" class="user-login-form">
       <h2 class="textual">User Login</h2>
-      <form
-        *ngIf="!(accountService.currentUser$ | async)"
-        #userloginform="ngForm"
-        (ngSubmit)="login()"
-      >
+      <form #userloginform="ngForm" (ngSubmit)="login()">
         <small class="text-danger"
           ><b>{{ msg }}</b></small
         >
@@ -101,7 +97,7 @@
         <small
           class="userlogin"
           style="color: navy; text-align: center; cursor: pointer"
-          ><b >click here</b></small
+          ><b>click here</b></small
         >
       </div>
 
@@ -192,7 +188,7 @@
           <small
             class="adminlogin"
             style="color: navy; text-align: center; cursor: pointer"
-            ><b >click here</b></small
+            ><b>click here</b></small
           >
         </div>
       </form>
