@@ -61,6 +61,13 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { MemberEditComponent } from './member-edit/member-edit.component';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { TimeagoModule } from 'ngx-timeago';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +97,10 @@ import { MemberEditComponent } from './member-edit/member-edit.component';
     MemberListComponent,
     MemberDetailComponent,
     PhotoEditorComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    ListComponent,
+    TextInputComponent,
+    DatePickerComponent
   ],
   imports: [
     BrowserModule,
@@ -131,7 +141,12 @@ import { MemberEditComponent } from './member-edit/member-edit.component';
     RouterModule,
     PageModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FileUploadModule,
+    ButtonsModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    TimeagoModule.forRoot(),
+    PaginationModule.forRoot(),
     TabsModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'

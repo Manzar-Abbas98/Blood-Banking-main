@@ -3,4 +3,6 @@ export interface MyUser{
     token : string;
     photoUrl: string;
     email : string;
+    city: string;
+    bloodGroup: string;
 }

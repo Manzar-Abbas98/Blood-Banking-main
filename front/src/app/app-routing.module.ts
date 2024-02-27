@@ -11,6 +11,7 @@ import { MemberListComponent } from './member-list/member-list.component';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberEditComponent } from './member-edit/member-edit.component';
 import { preventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
+import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'dash', component: MaindashboardComponent },
       {path: 'memberList', component: MemberListComponent},
       {path: 'members/:email' , component: MemberDetailComponent},
+      {path: 'list' , component: ListComponent},
       {path: 'member/edit' , component: MemberEditComponent, canDeactivate: [preventUnsavedChangesGuard]}
     ]
   },

@@ -1,183 +1,62 @@
-<div class="container">
-  <!--  Registration Form -->
-  <h3 class="textual">Registration Form</h3>
-  <form #Registerform="ngForm" (ngSubmit)="register()">
-    <small class="text-danger"
-      ><b>{{ msg }}</b></small
-    >
-    <!-- Email Address  -->
-    <div class="form-group">
-      <mat-form-field appearance="fill" class="mat-form-field-custom">
-        <mat-label>Email address</mat-label>
-        <input
-          matInput
-          placeholder="Enter your email"
-          name="email"
-          [(ngModel)]="model.Email"
-          required
-          pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
-          #email="ngModel"
-          [class.is-invalid]="email.invalid && email.touched"
-        />
-        <mat-error *ngIf="email.errors && email.invalid && email.touched">
-          <span *ngIf="email.errors['required']"><b>Required field</b></span>
-          <span *ngIf="email.errors['pattern']"><b>Invalid email Id</b></span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <!-- Username -->
-    <div class="form-group">
-      <mat-form-field appearance="fill" class="mat-form-field-custom">
-        <mat-label>UserName</mat-label>
-        <input
-          matInput
-          placeholder="Enter username"
-          name="username"
-          [(ngModel)]="model.Username"
-          required
-          #username="ngModel"
-          [class.is-invalid]="username.invalid && username.touched"
-        />
-        <mat-error *ngIf="username.invalid && username.touched">
-          <span><b>Required field</b></span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <!-- Gender -->
-    <div class="form-group">
-      <mat-form-field appearance="fill" class="mat-form-field-custom">
-        <mat-label>Gender</mat-label>
-        <mat-select
-          placeholder="Select gender"
-          name="gender"
-          [(ngModel)]="model.Gender"
-          #gender="ngModel"
-          required
-        >
-          <mat-option value="Male">Male</mat-option>
-          <mat-option value="Female">Female</mat-option>
-          <mat-option value="Others">Others</mat-option>
-        </mat-select>
-        <mat-error *ngIf="gender.invalid && gender.touched">
-          <span><b>Required field</b></span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <!-- Blood Group -->
-    <div class="form-group">
-      <mat-form-field appearance="fill" class="mat-form-field-custom">
-        <mat-label>Blood Group</mat-label>
-        <mat-select
-          placeholder="Select Blood Group"
-          name="Blood Group"
-          [(ngModel)]="model.BloodGroup"
-          #bloodgroup="ngModel"
-          required
-        >
-          <mat-option value="A+">A+</mat-option>
-          <mat-option value="A-">A-</mat-option>
-          <mat-option value="B+">B+</mat-option>
-          <mat-option value="B-">B-</mat-option>
-          <mat-option value="AB+">AB+</mat-option>
-          <mat-option value="AB-">AB-</mat-option>
-          <mat-option value="O+">O+</mat-option>
-          <mat-option value="O-">O-</mat-option>
-          <mat-option value="A+">A+</mat-option>
-        </mat-select>
-        <mat-error *ngIf="bloodgroup.invalid && bloodgroup.touched">
-          <span><b>Required field</b></span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <!-- Age  -->
-    <div class="form-group">
-      <mat-form-field appearance="fill" class="mat-form-field-custom">
-        <mat-label>Age</mat-label>
-        <input
-          matInput
-          type="number"
-          placeholder="Enter your age"
-          name="age"
-          [(ngModel)]="model.Age"
-          required
-          #age="ngModel"
-          [class.is-invalid]="age.invalid && age.touched"
-        />
-        <mat-error *ngIf="age.invalid && age.touched">
-          <span><b>Required field</b></span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <!-- Mobile Number  -->
-    <div class="form-group">
-      <mat-form-field appearance="fill" class="mat-form-field-custom">
-        <mat-label>Mobile Number</mat-label>
-        <input
-          matInput
-          type="tel"
-          placeholder="Enter mobile number"
-          name="mobile"
-          [(ngModel)]="model.Contact"
-          required
-          #mobile="ngModel"
-          [class.is-invalid]="mobile.invalid && mobile.touched"
-        />
-        <mat-error *ngIf="mobile.invalid && mobile.touched">
-          <span><b>Required field</b></span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <!-- Password  -->
-    <div class="form-group">
-      <mat-form-field appearance="fill" class="mat-form-field-custom">
-        <mat-label>Password</mat-label>
-        <input
-          matInput
-          [type]="showPassword ? 'text' : 'password'"
-          placeholder="Enter your password"
-          name="password"
-          [(ngModel)]="model.Password"
-          required
-          #password="ngModel"
-          [ngClass]="{ 'is-invalid': password.invalid && password.touched }"
-        />
-        <mat-icon matSuffix (click)="togglePasswordVisibility()">
-          {{ showPassword ? "visibility_off" : "visibility" }}
-        </mat-icon>
-      </mat-form-field>
-      <div *ngIf="password.errors && password.invalid && password.touched">
-        <small class="text-danger" *ngIf="password.errors['pattern']"
-          ><b>Required field</b></small
-        >
-      </div>
-      <small style="color: gray; font-size: 10px"
-        >At least one uppercase, numeric digit, lowercase, special character,
-        length of 6-20</small
-      >
-    </div>
+<div style="display: flex; justify-content: center; align-items: center; width: 50%;">
+<form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
+  <h2 class="text-center text-primary">Sign Up</h2>
+  <hr>
 
-    <div class="checkbox" style="margin-top: 5px">
-      <mat-checkbox name="remember"
-        >I agree to all Terms & conditions</mat-checkbox
-      >
-    </div>
+  <div class="mb-3">
+    <label style="margin-right: 10px;">I am a: </label>
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" value="male" formControlName="gender"> Male
+    </label>
 
-    <button
-      [disabled]="Registerform.form.invalid"
-      type="submit"
-      class="btn registerbtn"
-    >
-      Register
-    </button>
-  </form>
-
-  <div class="sign-up" style="text-align: center; margin-top: 10px">
-    Already have an Account?
-    <small
-      [routerLink]="['/login']"
-      style="color: navy; text-align: center; cursor: pointer"
-    >
-      <b> Login here</b>
-    </small>
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input ms-3" value="female" formControlName="gender"> Female
+    </label>
   </div>
+
+  <div class="mb-3">
+    <label style="margin-right: 10px;">My blood Group: </label>
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" value="O Negative" formControlName="bloodGroup"> O Negative
+    </label>
+
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input ms-3" value="A Positive" formControlName="bloodGroup"> A Positive
+    </label>
+  </div>
+
+  <div class="mb-3">
+    <label style="margin-right: 10px;">Country: </label>
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" value="Pakistan" formControlName="country"> Pakistan
+    </label>
+  </div>
+
+  <div class="mb-3">
+    <label style="margin-right: 10px;">City: </label>
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" value="Karachi" formControlName="city"> Karachi
+    </label>
+  </div>
+
+  <app-text-input [formControl]="$any(registerForm.controls['email'])" [label]="'Email'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['UserName'])" [label]="'Name'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['contact'])" [label]="'Contact Number'"></app-text-input>
+  <app-date-picker [formControl]="$any(registerForm.controls['dateOfBirth'])" [label]="'Date Of Birth'" [maxDate]="maxDate"></app-date-picker>
+  <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'password'" [type]="'password'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [label]="'Confirm Password'" [type]="'password'"></app-text-input>
+
+
+  <div class="row" *ngIf="validationErrors">
+    <ul class="text-danger">
+      <li *ngFor="let error of validationErrors">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="text-center">
+    <button class="btn btn-success me-2" type="submit">Register</button>
+  </div>
+</form>
 </div>

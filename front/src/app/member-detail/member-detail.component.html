@@ -21,17 +21,18 @@
 
                 <div>
                     <strong>Last Active : </strong>
-                    <p>{{member.lastActive}}</p>
+                    <p>{{member.lastActive | timeago}}</p>
                 </div>
 
                 <div>
                     <strong>Member Since </strong>
-                    <p>{{member.created}}</p>
+                    <p>{{member.created | date:'dd MMM yyyy'}}</p>
                 </div>
             </div>
 
             <div class="card-footer">
                 <div class="btn-grou d-flex">
+                    <button class="btn btn-primary mx-2">Request For blood</button>
                     <button class="btn btn-success">Messages</button>
                 </div>
             </div>
