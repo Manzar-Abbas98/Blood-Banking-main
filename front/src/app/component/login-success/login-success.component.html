@@ -7,9 +7,6 @@
   <button mat-icon-button matTooltip="Logout" (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>
   </button>
-  <button mat-icon-button matTooltip="Settings" routerLink="/member/edit">
-    <mat-icon>exit_to_app</mat-icon>
-  </button>
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">
@@ -32,6 +29,12 @@
         <div class="responsive">
           <mat-icon>bloodtype</mat-icon>
           <span>Donors</span>
+        </div>
+      </mat-list-item>
+      <mat-list-item routerLink="/member/edit" class="mat-list-item">
+        <div class="responsive">
+          <mat-icon>update</mat-icon>
+          <span>Profile Update</span>
         </div>
       </mat-list-item>
 

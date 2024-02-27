@@ -53,7 +53,6 @@ import { ComponentModule } from './component/component.module';
 import { PagesComponent } from './page/page.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { MemberListComponent } from './member-list/member-list.component';
 import { MemberCardsComponent } from './member-cards/member-cards.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
@@ -149,12 +148,12 @@ import { ListComponent } from './list/list.component';
     PaginationModule.forRoot(),
     TabsModule.forRoot(),
     ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
-    })
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent, LoginComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
