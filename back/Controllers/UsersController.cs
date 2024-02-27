@@ -4,6 +4,7 @@ using back.Data;
 using back.DTOs;
 using back.Entities;
 using back.Extensions;
+using back.Helpers;
 using back.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -27,9 +28,20 @@ namespace back.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        public async Task<ActionResult<PagedList<AppUser>>> GetUsers([FromQuery]UserParams userParams)
         {
-            var users = await _userRepository.GetMembersAsync();
+            var currentUser = await _userRepository.GetUserByEmailAsync(User.GetUsername());
+            userParams.Email = currentUser.Email;
+            userParams.City = currentUser.City;
+
+            if(string.IsNullOrEmpty(userParams.BloodGroup))
+            {
+                userParams.BloodGroup = currentUser.BloodGroup;
+            }
+
+            var users = await _userRepository.GetMembersAsync(userParams);
+
+            Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
 
             return Ok(users);
         }

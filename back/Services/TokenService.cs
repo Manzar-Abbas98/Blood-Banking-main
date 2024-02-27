@@ -23,7 +23,8 @@ namespace back.Services
                 var claims = new List<Claim>
                 {
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                    new Claim(JwtRegisteredClaimNames.Name, user.UserName)
+                    new Claim(JwtRegisteredClaimNames.Name, user.UserName),
+                    new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString())
                 };
 
                 var cred = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);

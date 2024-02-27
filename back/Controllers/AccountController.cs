@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using System.Text;
+using AutoMapper;
 using back.Data;
 using back.DTOs;
 using back.Entities;
@@ -13,9 +14,11 @@ namespace back.Controllers
     {
         private readonly DataContext _context;
         private readonly ITokenService _tokenService;
+        public IMapper _mapper { get; }
 
-        public AccountController(DataContext context, ITokenService tokenService)
+        public AccountController(DataContext context, ITokenService tokenService, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
             _tokenService = tokenService;
         }
@@ -25,19 +28,20 @@ namespace back.Controllers
         {
 
             if(await UserExist(registerDto.Email)) return BadRequest("This Email is already registered");
+
+            var user = _mapper.Map<AppUser>(registerDto);
+
             using var hmac = new HMACSHA512();
 
-            var user = new AppUser
-            {
-                Email = registerDto.Email,
-                UserName = registerDto.UserName,
-                Gender = registerDto.Gender,
-                BloodGroup = registerDto.BloodGroup,
-                // Age = registerDto.Age,
-                Contact = registerDto.Contact,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmac.Key
-            };
+
+                user.Email = registerDto.Email;
+                // user.UserName = registerDto.UserName;
+                // user.Gender = registerDto.Gender;
+                // user.BloodGroup = registerDto.BloodGroup;
+                // // Age = registerDto.Age,
+                // user.Contact = registerDto.Contact;
+                user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
+                user.PasswordSalt = hmac.Key;
 
              _context.Users.Add(user);
              await _context.SaveChangesAsync();
@@ -69,7 +73,8 @@ namespace back.Controllers
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
                 PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
-                Email = user.Email
+                Email = user.Email,
+                BloodGroup = user.BloodGroup
              };
         }
 

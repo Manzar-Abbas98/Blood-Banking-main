@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using back.DTOs;
 using back.Entities;
+using back.Helpers;
 
 namespace back.Interfaces
 {
@@ -15,7 +16,7 @@ namespace back.Interfaces
         Task<AppUser> GetUserByIdAsync(int id);
         Task<AppUser> GetUserByUsernameAsync(string username);
         Task<AppUser> GetUserByEmailAsync(string email);
-        Task<IEnumerable<MemberDto>> GetMembersAsync();
+        Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
         Task<MemberDto> GetMemberAsync(string email);
     }
 }

@@ -6,5 +6,7 @@ namespace back.DTOs
         public string Token { get; set; }
         public string PhotoUrl { get; set; }
         public string Email { get; set; }
+        public string City { get; set; }
+        public string BloodGroup { get; set; }
     }
 }

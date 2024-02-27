@@ -22,6 +22,8 @@ namespace back.Extensions
            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
            services.AddScoped<IPhotoService, PhotoService>();
+           services.AddScoped<LogUserActivity>();
+           services.AddScoped<IBloodRequestRepository, BloodRequestRepository>();
 
            return services;
         }

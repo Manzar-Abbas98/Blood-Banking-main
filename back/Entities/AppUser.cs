@@ -20,6 +20,8 @@ namespace back.Entities
         public string Country { get; set; }
         public string Introduction { get; set; }
         public List<Photo> Photos { get; set; } = new();
+        public List<BloodRequest> RequestForBlood { get; set; }
+        public List<BloodRequest> BloodRequest { get; set; }
 
 
         // public int GetAge()

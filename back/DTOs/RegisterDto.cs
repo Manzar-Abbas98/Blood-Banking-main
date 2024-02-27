@@ -17,6 +17,12 @@ namespace back.DTOs
         [Required]
         public string Contact { get; set; }
         [Required]
+         public DateOnly? DateOfBirth { get; set; }
+         [Required]
+         public string City { get; set; }
+         [Required]
+        public string Country { get; set; }
+        [Required]
         public string Password { get; set; }
     }
 }
