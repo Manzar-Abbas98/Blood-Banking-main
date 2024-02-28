@@ -7,6 +7,7 @@ import { PaginatedResult } from '../_models/pagination';
 import { UserParams } from '../_models/userParams';
 import { AccountService } from './account.service';
 import { MyUser } from '../_models/MyUser';
+import { getPaginatedResult, getPaginationHeaders } from './paginationHelper';
 
 @Injectable({
   providedIn: 'root'
@@ -61,14 +62,14 @@ export class MembersService {
 
     if (response) return of(response);
 
-    let params = this.getPaginationHeaders(UserParams.pageNumber, UserParams.pageSize);
+    let params = getPaginationHeaders(UserParams.pageNumber, UserParams.pageSize);
 
     params = params.append('minAge', UserParams.minAge);
     params = params.append('maxAge', UserParams.maxAge);
     params = params.append('city', UserParams.city);
     params = params.append('bloodGroup', UserParams.bloodGroup);
 
-    return this.getPaginatedResult<Member[]>(this.baseUrl + 'users', params).pipe(
+    return getPaginatedResult<Member[]>(this.baseUrl + 'users', params, this.http).pipe(
       map(response => {
         this.memberCache.set(Object.values(UserParams).join('-'), response);
         return response;
@@ -76,30 +77,7 @@ export class MembersService {
     )
   }
 
-  private getPaginatedResult<T>(url: string, params: HttpParams) {
-    const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>;
-    return this.http.get<T>(url, { observe: 'response', params }).pipe(
-      map(response => {
-        if (response.body) {
-          paginatedResult.result = response.body;
-        }
-        const pagination = response.headers.get('Pagination');
-        if (pagination) {
-          paginatedResult.pagination = JSON.parse(pagination);
-        }
-        return paginatedResult;
-      })
-    );
-  }
-
-  private getPaginationHeaders(pageNumber: number, pageSize: number) {
-    let params = new HttpParams();
-
-    params = params.append('pageNumber', pageNumber);
-    params = params.append('pageSize', pageSize);
-
-    return params;
-  }
+  
 
   getMember(email: string) {
     const member = [...this.memberCache.values()]

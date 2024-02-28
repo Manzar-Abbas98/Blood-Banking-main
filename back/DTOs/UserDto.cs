@@ -8,5 +8,6 @@ namespace back.DTOs
         public string Email { get; set; }
         public string City { get; set; }
         public string BloodGroup { get; set; }
+        public bool IsVerified { get; set; }
     }
 }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: true,
-  apiURL:  "api/"
+  apiURL:  "api/",
+  hubUrl: "hubs/"
 };
 
 

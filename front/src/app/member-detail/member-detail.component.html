@@ -1,4 +1,4 @@
-<div class="row" *ngIf="member">
+<div class="row">
     <div class="col-4">
         <div class="card">
             <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.userName}}"
@@ -32,21 +32,21 @@
 
             <div class="card-footer">
                 <div class="btn-grou d-flex">
-                    <button class="btn btn-primary mx-2">Request For blood</button>
-                    <button class="btn btn-success">Messages</button>
+                    <button (click)="addRequest(member)" class="btn btn-primary mx-2">Request For blood</button>
+                    <button (click)="selectTab('Messages')" class="btn btn-success">Messages</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="col-8">
-        <tabset class="member-tabs">
-            <tab heading="About {{member.userName}}">
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading="About {{member.userName}}" (selectTab)="onTabActivated($event)">
                 <h4>Description</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo corrupti a laborum, ipsa eos natus nihil aliquam vel fuga nisi at animi consequuntur perferendis laudantium voluptatum deserunt aperiam, aut suscipit.</p>
+                <p>{{member.introduction}}</p>
             </tab>
-            <tab heading="Message">
-                Message will go here
+            <tab heading="Messages" (selectTab)="onTabActivated($event)">
+                <app-member-messages [username]="member.email" [messages]="messages"></app-member-messages>
             </tab>
         </tabset>
     </div>

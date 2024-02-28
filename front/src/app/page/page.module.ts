@@ -16,13 +16,13 @@ import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
-    DonorsComponent,
-    UserhomeComponent,
-    MemberListComponent,
-    MemberCardsComponent,
-    MemberEditComponent,
-    MemberDetailComponent,
-    PhotoEditorComponent,
+    // DonorsComponent,
+    // UserhomeComponent,
+    // MemberListComponent,
+    // MemberCardsComponent,
+    // MemberEditComponent,
+    // MemberDetailComponent,
+    // PhotoEditorComponent,
   ],
   imports: [
     CommonModule,

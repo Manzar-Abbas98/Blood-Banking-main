@@ -3,6 +3,7 @@ using back.Data;
 using back.Extensions;
 using back.Interfaces;
 using back.Services;
+using back.SignalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -21,7 +22,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("https://localhost:4200"));
 
 
 app.UseHttpsRedirection();
@@ -31,6 +32,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<PresenceHub>("hubs/presence");
 
 app.Run();
 

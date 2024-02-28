@@ -24,6 +24,8 @@ namespace back.Extensions
            services.AddScoped<IPhotoService, PhotoService>();
            services.AddScoped<LogUserActivity>();
            services.AddScoped<IBloodRequestRepository, BloodRequestRepository>();
+           services.AddScoped<IMessageRepository, MessageRepository>();
+           services.AddSignalR();
 
            return services;
         }

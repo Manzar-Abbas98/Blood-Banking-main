@@ -2,7 +2,7 @@ using back.Extensions;
 
 namespace back.Entities
 {
-    public class AppUser
+    public class AppUser 
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -17,11 +17,15 @@ namespace back.Entities
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime LastActive { get; set; } = DateTime.UtcNow;
         public string City { get; set; }
+        public bool IsVerified { get; set; }
+        public string Otp { get; set; }
         public string Country { get; set; }
         public string Introduction { get; set; }
         public List<Photo> Photos { get; set; } = new();
         public List<BloodRequest> RequestForBlood { get; set; }
         public List<BloodRequest> BloodRequest { get; set; }
+        public List<Message> MessagesSent { get; set; }
+        public List<Message> MessagesReceived { get; set; }
 
 
         // public int GetAge()

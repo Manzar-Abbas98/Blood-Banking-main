@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent {
   IsAdmin = false;
+  IsVerified: boolean | undefined;
 
   // user = new User();
   user : any = {};

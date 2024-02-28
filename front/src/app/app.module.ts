@@ -67,6 +67,9 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TimeagoModule } from 'ngx-timeago';
 import { ListComponent } from './list/list.component';
+import { MemberListComponent } from './member-list/member-list.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MemberMessagesComponent } from './member-messages/member-messages.component';
 
 @NgModule({
   declarations: [
@@ -93,12 +96,13 @@ import { ListComponent } from './list/list.component';
     PagesComponent,
     MemberListComponent,
     MemberCardsComponent,
-    MemberListComponent,
     MemberDetailComponent,
     PhotoEditorComponent,
     MemberEditComponent,
     ListComponent,
     TextInputComponent,
+    MessagesComponent,
+    MemberMessagesComponent,
     DatePickerComponent
   ],
   imports: [
@@ -138,7 +142,6 @@ import { ListComponent } from './list/list.component';
     MatSortModule,
     ComponentModule,
     RouterModule,
-    PageModule,
     HttpClientModule,
     ReactiveFormsModule,
     FileUploadModule,
